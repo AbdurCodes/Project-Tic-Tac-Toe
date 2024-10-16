@@ -1,35 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Tic Tac Toe Game</h1>
+    <h1>Tic-Tac-Toe Game</h1>
 
-    <div class="gameboard">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+    <div class="gameboardSection">
+        <div class="gameboard">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
     </div>
+   
 
 
 
+    <div class="desc">
+        <div>
+            <h2>What is Tic-Tac-Toe?</h2>
+            <p>Tic-Tac-Toe is a simple, two-player game played on a 3x3 grid. The game is also known as Noughts and Crosses or X's and O's</p>
+        </div>
+        <div>
+            <h2>Game Rules:</h2>
+            <div>
+                <p><b>Two Players:</b> The game is played between two players. One player marks X, and the other marks O.</p>
+                <p><b>Turn-based:</b> Players take turns placing their mark in an empty cell on the 3x3 grid.</p>
+                <p><b>Winning Conditions:</b> A player wins if they successfully place three of their marks consecutively in any horizontal row or any vertical column or any dinagonal line</p>
+                <p><b>Draw:</b> If all 9 spaces on the grid are filled and no player has three marks in a row, the game ends in a draw.</p></div>
+        </div>
+    </div>
+    
+    <button type="button" id="playGame">Play Game</button>
 
 
+    <dialog>
+        <!-- <div class="modalCloseBtn">
+            <button autofocus>x</button>
+        </div> -->
+        <h2></h2>
+        <p></p>
+        <button type="button" id="playNewGame">Play New Game</button>
+        <button type="button" id="nomoregames">Exit</button>
+    </dialog>
 
 
 
 
 
     <script src="script.js"></script>
+  
+    
+    <footer>Copyright &#169 2024&nbsp<a target="_blank" href="https://abdurcodes.github.io/landing_page_TOP/">Soft Sols</a></footer>
+
 </body>
+
 </html>
