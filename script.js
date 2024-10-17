@@ -1,19 +1,49 @@
 const cells = document.querySelectorAll('.cell');
+const cellsArray = Array.from(cells);
+
 const desc = document.querySelector('.desc');
 const gameboardDisplay = document.querySelector('.gameboard');
+const gameboardSection = document.querySelector('.gameboardSection');
 const dialog = document.querySelector("dialog");
+const dialogPlayersNames = document.querySelector("#dialogPlayersNames");
+const closeModal = document.querySelector(".modalCloseBtn");
 const gameStatus = document.querySelector("dialog h2");
 const gameWinner = document.querySelector("dialog p");
 // const closeModalBtn = document.querySelector("dialog button");
 const playGame = document.querySelector('#playGame');
 const playNewGame = document.querySelector('#playNewGame');
-const cellsArray = Array.from(cells);
 const noMoreGames = document.querySelector('#nomoregames');
+
+let form = document.getElementById('myForm');
+let turnDisplay = document.querySelectorAll('.turnDisplay');
+const turnDisplayList = Array.from(turnDisplay);
+
+
 
 let turnNumber = 0;
 gameboardDisplay.style.display = 'none';
+turnDisplayList[0].style.visibility = 'hidden';
+turnDisplayList[0].textContent = player1Name + "'s turn";
+turnDisplayList[1].style.visibility = 'hidden';
+turnDisplayList[1].textContent = player2Name + "'s turn";
+// console.log(turnDisplayList[0]);
+
 
 function gameboard() {
+
+    let player1Name = document.getElementById('player1Name').value;
+    let player2Name = document.getElementById('player2Name').value;
+    console.log(player1Name);
+    console.log(player2Name);
+
+    turnDisplayList[0].style.visibility = 'visible';
+    turnDisplayList[0].textContent = player1Name + "'s turn";
+    
+    turnDisplayList[1].style.visibility = 'hidden';
+    turnDisplayList[1].textContent = player2Name + "'s turn";
+    // console.log(turnDisplayList);
+    // console.log(turnDisplayList[0]);
+
     playGame.style.display = 'none';
     desc.style.display = 'none';
     gameboardDisplay.style.display = 'flex';
@@ -26,12 +56,24 @@ function gameboard() {
                     turnNumber++;
                     if (turnNumber === 1 | turnNumber === 3 | turnNumber === 5 | turnNumber === 7 | turnNumber === 9) {
                         box.textContent = p1.sym;
-                        console.log(turnNumber);
+
+                        turnDisplayList[0].style.visibility = 'hidden';
+                        player2Name = document.getElementById('player2Name').value;
+                        turnDisplayList[1].style.visibility = 'visible';
+                        turnDisplayList[1].textContent = player2Name + "'s turn";
+                        console.log("p 2 turn: ", player2Name);
+
                         if (p1WinningMoves()) {
-                            console.log('Player 1 wins.');
-                            gameOver('Game Over!', 'Player 1 wins.');
+                            turnDisplayList[1].style.visibility = 'hidden';
+                            turnDisplayList[1].textContent = player2Name + "'s turn";
+                            // console.log('Player 1 wins.');
+                            player1Name = document.getElementById('player1Name').value;
+                            gameOver('Game Over!', `${player1Name} wins.`);
                         }
+
                         if (turnNumber === 9) {
+                            turnDisplayList[1].style.visibility = 'hidden';
+                            turnDisplayList[1].textContent = player2Name + "'s turn";
                             if (!p1WinningMoves()) {
                                 console.log('Game draw!');
                                 gameOver('Game Draw!', 'No one wins.');
@@ -40,10 +82,20 @@ function gameboard() {
                     }
                     else {
                         box.textContent = p2.sym;
+
+                        turnDisplayList[1].style.visibility = 'hidden';
+                        // turnDisplayList[1].textContent = player2Name + "'s turn";
+
+                        turnDisplayList[0].style.visibility = 'visible';
+                        // turnDisplayList[0].textContent = player1Name + "'s turn";
+
                         console.log(turnNumber);
                         if (p2WinningMoves()) {
-                            console.log('Player 2 wins.');
-                            gameOver('Game Over!', 'Player 2 wins.');
+                            turnDisplayList[0].style.visibility = 'hidden';
+                            turnDisplayList[0].textContent = player1Name + "'s turn";
+                            // console.log('Player 2 wins.');
+                            player2Name = document.getElementById('player2Name').value;
+                            gameOver('Game Over!', `${player2Name} wins.`);
                         }
                     }
                 }
@@ -79,11 +131,9 @@ function newGame() {
         cellsArray[i].textContent = '';
     }
     turnNumber = 0;
+
 }
 
-// function gameWinner() { 
-
-// }
 
 function gameOver(status, winner) {
     console.log('Game is over!');
@@ -105,21 +155,62 @@ let p1 = createPlayer('kiran', 'X');
 let p2 = createPlayer('abdur', 'O');
 
 
-playGame.addEventListener('click', ()=>{
-    gameboard();
-})
-playNewGame.addEventListener('click', ()=>{
+playGame.addEventListener('click', () => {
+    // gameboard();
+    console.log(dialogPlayersNames);
+    dialogPlayersNames.showModal();
+    closeModal.addEventListener("click", () => {
+        dialogPlayersNames.close();
+    });
+});
+
+playNewGame.addEventListener('click', () => {
+
+    // turnDisplayList[0].style.visibility = 'visible';
+    // // console.log(turnDisplayList[0]);
+    // // turnDisplayList[0].textContent = player1Name + "'s turn";
+    // // turnDisplayList[1].style.visibility = 'hidden';
+    // // turnDisplayList[1].textContent = player2Name + "'s turn";
+    // newGame();
+    // dialog.close();
+
     newGame();
+    
+    dialogPlayersNames.showModal();
+    closeModal.addEventListener("click", () => {
+        dialogPlayersNames.close();
+    });
     dialog.close();
-})
-noMoreGames.addEventListener('click', ()=>{
+
+});
+
+
+
+noMoreGames.addEventListener('click', () => {
     playGame.style.display = 'inline';
     desc.style.display = 'block';
     gameboardDisplay.style.display = 'none';
-    newGame()
+    turnDisplayList[0].style.visibility = 'hidden';
+    turnDisplayList[1].style.visibility = 'hidden';
+    document.getElementById('player1Name').value = 'Player 1';
+    document.getElementById('player2Name').value = 'Player 2';
+    newGame();
     dialog.close();
-})
+});
 
+
+form.addEventListener('submit', function () {
+    gameboard();
+});
+
+
+
+
+
+
+
+
+// gameboardSection
 
 // strategy
 // create gameboard first (generally a 3x3 grid)

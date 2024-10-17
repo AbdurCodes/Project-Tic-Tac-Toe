@@ -21,20 +21,36 @@ h1{
 
 
 .gameboard{
-    margin: 52px auto;
-    width: 500px;
+    margin: 52px 0;
+    max-width: 500px;
     /* border: 2px solid red; */
     /* display: flex; */
     flex-wrap: wrap;
     justify-content: center;
-  
-    
+
 }
+
+.turnDisplay{
+    /* border: 2px solid red; */
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 
 .gameboardSection{
-  flex-grow: 1;
+  
+  /* border: 2px solid red; */
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-evenly;
 }
 
+.gameContainer{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
 
 .cell{
     border: 2px solid black;
@@ -160,6 +176,43 @@ footer {
 
         &:hover {
             color: rgb(204, 229, 153);
+        }
+    }
+}
+
+
+
+.modal-items {
+    margin: 18px 0px;
+
+    & input {
+        width: 60%;
+        height: 30px;
+        font-size: 1.2rem;
+    }
+
+    & label {
+        font-size: 1.2em;
+        font-weight: 800;
+    }
+}
+
+
+
+.submitBtn {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+
+    & input {
+        width: 130px;
+        height: 30px;
+        font-size: 1.2rem;
+        border-radius: 12px;
+
+        &:hover {
+            background-color: rgb(47, 255, 64);
+            cursor: pointer;
         }
     }
 }
