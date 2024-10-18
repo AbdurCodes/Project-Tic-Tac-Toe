@@ -36,6 +36,12 @@ h1{
     font-weight: bold;
 }
 
+.error{
+    color: red;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
 
 .gameboardSection{
   
@@ -57,7 +63,7 @@ h1{
     width: 150px;
     height: 150px;
     font-size: 8rem;
-    color: red;
+    color: blue;
 
     &:nth-child(1){
         border-left: none;
@@ -142,6 +148,13 @@ dialog {
             border: 2px solid rgb(7, 8, 7);
             cursor: pointer;
         }
+    }
+}
+
+
+#dialogPlayersNames{
+    & h2 {
+        margin-top: 61px;
     }
 }
 

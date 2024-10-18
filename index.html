@@ -11,9 +11,9 @@
 <body>
     <h1>Tic-Tac-Toe Game</h1>
     <div class="gameContainer">
+        <h2 class="error">Plz click in an empty box</h2>
         <div class="gameboardSection">
             <div class="turnDisplay"></div>
-
             <div class="gameboard">
                 <div class="cell"></div>
                 <div class="cell"></div>
@@ -25,7 +25,6 @@
                 <div class="cell"></div>
                 <div class="cell"></div>
             </div>
-
             <div class="turnDisplay"></div>
         </div>
     </div>
@@ -65,10 +64,13 @@
         <button type="button" id="nomoregames">Exit</button>
     </dialog>
 
+
+
+
     <dialog id="dialogPlayersNames">
-        <div class="modalCloseBtn">
+        <!-- <div class="modalCloseBtn">
             <button autofocus>x</button>
-        </div>
+        </div> -->
         <h2>Enter Player Names</h2>
 
         <form method="dialog" id="myForm">
